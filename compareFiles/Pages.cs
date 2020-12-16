@@ -7,7 +7,7 @@ namespace compareFiles
 {
     public static class Pages
     {
-        public static void CompareFiles(bool IsTXT)
+        public static void CompareFiles(bool isTxt)
         {
             Dictionary<string, string> paramsFindFiles = new Dictionary<string, string>();
 
@@ -23,11 +23,11 @@ namespace compareFiles
                 {
                     case "1":
                         // Ввести путь к файлам
-                        Pages.EnterFile(IsTXT);
+                        Pages.EnterFile(isTxt);
                         break;
                     case "2":
                         // Создать 2 файла
-                        Pages.CreateFile(IsTXT);
+                        Pages.CreateFile(isTxt);
                         break;
                     case "exit":
                         // просто выходим
@@ -51,7 +51,7 @@ namespace compareFiles
             Console.WriteLine("exit. Выход");
             Console.Write("\n> ");
         }
-        public static void EnterFile(bool IsTXT)
+        public static void EnterFile(bool isTxt)
         {
             Dictionary<string, string> pathToFiles = new Dictionary<string, string>();
             for (int i = 1; i <= 2; i++)
@@ -75,9 +75,9 @@ namespace compareFiles
                 }
             }
 
-            Pages.FileCompare(pathToFiles, IsTXT);
+            Pages.FileCompare(pathToFiles, isTxt);
         }
-        public static void CreateFile(bool isTXT)
+        public static void CreateFile(bool isTxt)
         {
             Dictionary<string, string> pathToFiles = new Dictionary<string, string>();
             for (int i = 1; i <= 2; i++)
@@ -109,11 +109,11 @@ namespace compareFiles
                 Console.WriteLine();
             }
 
-            Pages.FileCompare(pathToFiles, isTXT);
+            Pages.FileCompare(pathToFiles, isTxt);
         }
-        private static void FileCompare(Dictionary<string, string> pathToFiles, bool isTXT)
+        private static void FileCompare(Dictionary<string, string> pathToFiles, bool isTxt)
         {
-            if (isTXT)
+            if (isTxt)
             {
                 if (Helper.TxtFileCompare(pathToFiles))
                 {
