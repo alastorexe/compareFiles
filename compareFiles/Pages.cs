@@ -9,8 +9,6 @@ namespace compareFiles
     {
         public static void CompareFiles(bool isTxt)
         {
-            Dictionary<string, string> paramsFindFiles = new Dictionary<string, string>();
-
             while (true)
             {
                 PrintMenuChoiseFile();
