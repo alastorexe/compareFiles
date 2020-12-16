@@ -21,11 +21,11 @@ namespace compareFiles
             switch (menuEntry)
             {
                 case "1":
-                    // Показать все файлы в текущей директории
+                    // Побитовое сравнение файлов
                     Pages.CompareFiles(false);
                     break;
                 case "2":
-                    // Показать все файлы в указанной директории
+                    // Сравнение 2-х текстовых файлов
                     Pages.CompareFiles(true);
                     break;
                 case "exit":
