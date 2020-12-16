@@ -61,7 +61,6 @@ namespace compareFiles
             // the same.
             return ((file1byte - file2byte) == 0);
         }
-
         public static bool TxtFileCompare(Dictionary<string, string> pathToFiles)
         {
             bool result = false;

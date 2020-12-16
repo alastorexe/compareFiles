@@ -22,11 +22,11 @@ namespace compareFiles
             {
                 case "1":
                     // Показать все файлы в текущей директории
-                    Pages.CompareFiles();
+                    Pages.CompareFiles(false);
                     break;
                 case "2":
                     // Показать все файлы в указанной директории
-                    Pages.CompareFiles();
+                    Pages.CompareFiles(true);
                     break;
                 case "exit":
                     // просто выходим
@@ -49,8 +49,7 @@ namespace compareFiles
             Console.WriteLine($"compareFiles - главное меню");
             Console.WriteLine("Выберите пункт меню:");
             Console.WriteLine("1. Побитовое сравнение 2-х файлов по содержимому.");
-            Console.WriteLine("2. Путь к да");
-            Console.WriteLine("3. Ни ху кто я?)");
+            Console.WriteLine("2. Сравнение 2-х текстовых файлов.");
             Console.WriteLine("exit. Выход");
             Console.Write("\n> ");
         }

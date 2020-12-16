@@ -7,7 +7,7 @@ namespace compareFiles
 {
     public static class Pages
     {
-        public static void CompareFiles()
+        public static void CompareFiles(bool IsTXT)
         {
             Dictionary<string, string> paramsFindFiles = new Dictionary<string, string>();
 
@@ -23,11 +23,11 @@ namespace compareFiles
                 {
                     case "1":
                         // Ввести путь к файлам
-                        Pages.EnterFile();
+                        Pages.EnterFile(IsTXT);
                         break;
                     case "2":
                         // Создать 2 файла
-                        Pages.CreateFile();
+                        Pages.CreateFile(IsTXT);
                         break;
                     case "exit":
                         // просто выходим
@@ -42,8 +42,6 @@ namespace compareFiles
                 Console.Clear();
             }
         }
-
-
         public static void PrintMenuChoiseFile()
         {
             Console.WriteLine($"Pages - выбор файлов");
@@ -53,8 +51,7 @@ namespace compareFiles
             Console.WriteLine("exit. Выход");
             Console.Write("\n> ");
         }
-
-        public static void EnterFile()
+        public static void EnterFile(bool IsTXT)
         {
             Dictionary<string, string> pathToFiles = new Dictionary<string, string>();
             for (int i = 1; i <= 2; i++)
@@ -78,10 +75,9 @@ namespace compareFiles
                 }
             }
 
-            Pages.FileCompare(pathToFiles);
+            Pages.FileCompare(pathToFiles, IsTXT);
         }
-
-        public static void CreateFile()
+        public static void CreateFile(bool isTXT)
         {
             Dictionary<string, string> pathToFiles = new Dictionary<string, string>();
             for (int i = 1; i <= 2; i++)
@@ -113,19 +109,34 @@ namespace compareFiles
                 Console.WriteLine();
             }
 
-            Pages.FileCompare(pathToFiles);
+            Pages.FileCompare(pathToFiles, isTXT);
         }
-
-        private static void FileCompare(Dictionary<string, string> pathToFiles)
+        private static void FileCompare(Dictionary<string, string> pathToFiles, bool isTXT)
         {
-            if (Helper.FileCompare(pathToFiles))
+            if (isTXT)
             {
-                Console.WriteLine("Файлы одинаковые");
+                if (Helper.TxtFileCompare(pathToFiles))
+                {
+                    Console.WriteLine("Файлы одинаковые");
+                }
+                else
+                {
+                    Console.WriteLine("Файлы НЕ одинаковые");
+                }
             }
             else
             {
-                Console.WriteLine("Файлы НЕ одинаковые");
+                if (Helper.FileCompare(pathToFiles))
+                {
+                    Console.WriteLine("Файлы одинаковые");
+                }
+                else
+                {
+                    Console.WriteLine("Файлы НЕ одинаковые");
+                }
             }
+
+            Console.ReadKey();
         }
 
     }
