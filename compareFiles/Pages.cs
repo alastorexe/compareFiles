@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -111,6 +112,8 @@ namespace compareFiles
         }
         private static void FileCompare(Dictionary<string, string> pathToFiles, bool isTxt)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             if (isTxt)
             {
                 if (Helper.TxtFileCompare(pathToFiles))
@@ -133,6 +136,14 @@ namespace compareFiles
                     Console.WriteLine("Файлы НЕ одинаковые");
                 }
             }
+            stopWatch.Stop();
+
+            TimeSpan ts = stopWatch.Elapsed;
+
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+
+            Console.WriteLine("RunTime: " + elapsedTime);
 
             Console.ReadKey();
         }
